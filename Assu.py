@@ -49,7 +49,8 @@ if __name__ == "__main__":
                 print("Assu:My name is Assu.")
             elif "wikipedia" in string:
                 speak("Collecting information from Wikipedia")
-                summ=wikipedia.summary("New York")
+                string = string.replace('wikipedia','')
+                summ = wikipedia.summary(string, sentences=2)
                 speak("According to Wiipedia:")
                 print(summ)
                 speak(summ)
@@ -69,5 +70,11 @@ if __name__ == "__main__":
                 day = datetime.datetime.now().strftime("%A")
                 speak(f"Today is {day}")
                 print(f"Assu:Today is {day}")
+            elif "thankyou" in string:
+                speak("It's my pleasure")
+                print("It's my pleasure")
+            elif "exit" in string or "quit" in string:
+                speak("Have a good day")
+                exit()
         except Exception as e:
             print(e)
