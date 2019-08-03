@@ -4,15 +4,27 @@ import wikipedia
 import datetime
 import os
 import webbrowser
+import socket
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 wishes=['good morning','good evening','good afternoon']
 websites = {'youtube': 'youtube.com','facebook':'facebook.com','google':'google.com','gmail':'gmail.com'}
+# def isConnection():
+#     try:
+#         socket.create_connection("www.google.com",80)
+#         return True
+#     except Exception as e:
+#         pass
+#     return False
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 def initial():
+    # check=isConnection()
+    # if check==False:
+    #     print("It seems that Internet connection is not Active.")
+    #     exit()
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
         speak("Good Morning Buddy!")
